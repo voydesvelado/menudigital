@@ -1,65 +1,107 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import BenefitsSection from "@/components/home/BenefitsSection";
+import HowItWorksSection from "@/components/home/HowItWorksSection";
+import SeoBenefitsSection from "@/components/home/SeoBenefitsSection";
+import { TopNavbar } from "@/components/home/TopNavbar";
 
-export default function Home() {
+// SEO (App Router)
+export const metadata = {
+  title: "Menú digital con QR para restaurantes | Menú QR",
+  description:
+    "Convierte tu menú físico en una experiencia tipo Uber Eats para que tus clientes encuentren más rápido, exploren más platillos y aumenten el consumo por mesa.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Menú digital con QR para restaurantes",
+    description:
+      "Menú digital tipo Uber Eats: búsqueda, categorías y mejor experiencia para vender más.",
+    url: "/",
+    type: "website",
+  },
+};
+
+export default function HomePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Menú QR",
+    url: "https://tudominio.com",
+    description:
+      "Menú digital con QR para restaurantes con navegación tipo Uber Eats.",
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      {/* Structured Data (SEO) */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <TopNavbar />
+
+      <main className="mx-auto w-full max-w-md px-4 pb-10">
+        {/* Imagen del menú (340px height) */}
+        <section className="pt-6" aria-label="Vista previa del menú">
+          <div className="relative w-full rounded-3xl bg-muted aspect-[1/1]">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="https://rvivezcozdjpgkwqgroq.supabase.co/storage/v1/object/public/menu-images/Landing/Hero/HeroBanner.png"
+              alt="Ejemplo de menú digital con QR tipo Uber Eats"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 420px"
+              className="object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          </div>
+        </section>
+
+        {/* Contenido */}
+        <section className="pt-8">
+          <h1 className="text-[32px] font-medium leading-snug tracking-tight">
+            Menú digital con QR para vender más
+          </h1>
+
+          <p className="mt-3 text-[16px] font-normal leading-relaxed text-muted-foreground">
+            Convierte tu menú físico en una experiencia digital tipo Uber Eats.
+            Tus clientes encuentran más rápido, exploran más platillos y
+            consumen más por mesa.
+          </p>
+
+          {/* CTAs */}
+          <div className="mt-6 flex gap-3">
+            <Button
+              asChild
+              variant="outline"
+              className="h-11 flex-1 rounded-full text-[14px] font-medium"
+            >
+              <Link href="/r/tu-restaurante" aria-label="Ver ejemplo del menú">
+                Ver ejemplo
+              </Link>
+            </Button>
+            <Button
+              asChild
+              className="h-11 flex-1 rounded-full text-[14px] font-medium"
+            >
+              <a
+                href="https://wa.me/52TU_NUMERO?text=Hola%20quiero%20una%20demo%20del%20men%C3%BA%20digital"
+                aria-label="Hablar por WhatsApp"
+              >
+                Hablar por WhatsApp
+              </a>
+            </Button>
+          </div>
+
+          <p className="mt-3 text-[14px] font-normal text-muted-foreground">
+            Respuesta rápida por WhatsApp. Sin compromiso.
+          </p>
+        </section>
       </main>
-    </div>
+
+      <SeoBenefitsSection />
+      <BenefitsSection />
+      <HowItWorksSection />
+    </>
   );
 }

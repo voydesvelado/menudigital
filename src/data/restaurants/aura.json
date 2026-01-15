@@ -1,0 +1,103 @@
+{
+  "id": "aura",
+  "name": "AURA",
+  "slug": "aura",
+  "categories": [
+    {
+      "id": "promociones",
+      "title": "Promociones",
+      "items": [
+        {
+          "id": "promo-1",
+          "title": "Yakimeshi Mixto",
+          "price": 139.99,
+          "description": "Arroz con verduras, carne de res, camarón y huevo (200g)"
+        },
+        {
+          "id": "promo-2",
+          "title": "Ramen Clásico + Bebida",
+          "price": 189.0,
+          "description": "Ramen tradicional con caldo de cerdo, incluye refresco"
+        }
+      ]
+    },
+    {
+      "id": "cortes",
+      "title": "Cortes",
+      "items": [
+        {
+          "id": "corte-1",
+          "title": "Rib Eye",
+          "price": 420.0,
+          "description": "400g de rib eye importado, acompañado de verduras a la parrilla"
+        },
+        {
+          "id": "corte-2",
+          "title": "New York Steak",
+          "price": 389.0,
+          "description": "Corte jugoso de 350g, término a elegir"
+        },
+        {
+          "id": "corte-3",
+          "title": "Filete Mignon",
+          "price": 459.0,
+          "description": "Filete de res suave y magro (300g)"
+        }
+      ]
+    },
+    {
+      "id": "ensaladas",
+      "title": "Ensaladas",
+      "items": [
+        {
+          "id": "ensalada-1",
+          "title": "Ensalada César",
+          "price": 129.0,
+          "description": "Lechuga romana, crutones, parmesano y aderezo césar"
+        },
+        {
+          "id": "ensalada-2",
+          "title": "Ensalada Oriental",
+          "price": 149.0,
+          "description": "Mix de vegetales, ajonjolí y aderezo de soya dulce"
+        }
+      ]
+    },
+    {
+      "id": "sopas",
+      "title": "Sopas",
+      "items": [
+        {
+          "id": "sopa-1",
+          "title": "Ramen Tonkotsu",
+          "price": 169.0,
+          "description": "Caldo espeso de cerdo con fideos y huevo marinado"
+        },
+        {
+          "id": "sopa-2",
+          "title": "Sopa Miso",
+          "price": 89.0,
+          "description": "Sopa tradicional japonesa con tofu y algas"
+        }
+      ]
+    },
+    {
+      "id": "postres",
+      "title": "Postres",
+      "items": [
+        {
+          "id": "postre-1",
+          "title": "Cheesecake de Matcha",
+          "price": 99.0,
+          "description": "Cheesecake cremoso con sabor a té matcha"
+        },
+        {
+          "id": "postre-2",
+          "title": "Helado Tempura",
+          "price": 109.0,
+          "description": "Helado frito con cobertura crujiente"
+        }
+      ]
+    }
+  ]
+}
