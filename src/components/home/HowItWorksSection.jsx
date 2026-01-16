@@ -1,4 +1,5 @@
 import ProcessStepCard from "./ProcessStepCard";
+import Link from "next/link";
 
 export default function HowItWorksSection() {
   const steps = [
@@ -22,17 +23,16 @@ export default function HowItWorksSection() {
 
   return (
     <section className="w-full bg-black">
-      <div
-        className="mx-auto w-full max-w-md px-4 py-12"
-        aria-labelledby="how-title"
-      >
+      <div className="mx-auto w-full max-w-md px-4 py-12">
+        {/* Title */}
         <h2
           id="how-title"
-          className="text-[24px] text-center font-medium text-white leading-tight tracking-tight mb-8"
+          className="mb-8 text-center text-[24px] font-medium leading-tight tracking-tight text-white"
         >
-          Cómo funciona tu menú digital con QR
+          Nuestro proceso
         </h2>
 
+        {/* Steps */}
         <div className="flex flex-col gap-4">
           {steps.map((s) => (
             <ProcessStepCard
@@ -42,6 +42,29 @@ export default function HowItWorksSection() {
               description={s.description}
             />
           ))}
+        </div>
+
+        {/* Mini CTA Section */}
+        <div className="mt-16 text-center">
+          <p className="text-[24px] font-medium leading-tight">
+            <span className="metal-text">Tu comida ya es buena.</span>
+            <br />
+            <span className="metal-text">
+              Tu menú debería estar a la altura.
+            </span>
+          </p>
+
+          <div className="mt-8">
+            <Link
+              href="https://wa.me/XXXXXXXXXX"
+              target="_blank"
+              className="inline-flex w-full items-center justify-center rounded-full bg-white h-11 px-6 py-4 text-[16px] font-medium text-black transition hover:opacity-90"
+            >
+              Hablar por WhatsApp
+            </Link>
+          </div>
+
+          <p className="mt-12 text-sm text-white/60">Lumo 2026</p>
         </div>
       </div>
     </section>

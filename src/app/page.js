@@ -60,7 +60,11 @@ export default function HomePage() {
         {/* Contenido */}
         <section className="pt-8">
           <h1 className="text-[32px] font-medium leading-snug tracking-tight">
-            Menú digital con QR para vender más
+            <span className="metal-text-dark inline-block">
+              Menú digital con QR para
+              <br />
+              vender más
+            </span>
           </h1>
 
           <p className="mt-3 text-[16px] font-normal leading-relaxed text-muted-foreground">

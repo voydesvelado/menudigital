@@ -135,3 +135,56 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes metal-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.metal-text {
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    #d4d4d4 20%,
+    #ffffff 40%,
+    #9ca3af 60%,
+    #ffffff 80%
+  );
+  background-size: 200% auto;
+  animation: metal-shine 6s linear infinite;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes dark-metal-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes dark-metal-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.metal-text-dark {
+  background: linear-gradient(120deg, #0a0a0a, #3a3a3a, #0a0a0a);
+  background-size: 200% auto;
+
+  animation: dark-metal-shine 3s ease-out forwards;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

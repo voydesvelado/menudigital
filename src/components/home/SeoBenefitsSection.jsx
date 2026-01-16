@@ -34,7 +34,7 @@ export default function SeoBenefitsSection() {
       className="w-full bg-black"
     >
       <div className="mx-auto max-w-md px-4 py-16">
-        <h2 className="text-[24px] font-medium leading-tight tracking-tight text-white">
+        <h2 className="text-[24px] text-center font-medium leading-tight metal-text tracking-tight">
           Beneficios clave para tu restaurante
         </h2>
 

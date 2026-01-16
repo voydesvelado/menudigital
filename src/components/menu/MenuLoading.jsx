@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function MenuLoading() {
   return (
-    <main className="min-h-screen mx-auto w-full max-w-md border-gray bg-background">
+    <main className="min-h-screen mx-auto w-full max-w-md border-gray bg-background p-4">
       <div className="mx-auto w-full max-w-3xl space-y-6">
         {/* Header */}
         <div className="space-y-2">
@@ -18,7 +18,6 @@ export default function MenuLoading() {
           <Skeleton className="h-8 w-24 rounded-full" />
           <Skeleton className="h-8 w-20 rounded-full" />
           <Skeleton className="h-8 w-28 rounded-full" />
-          <Skeleton className="h-8 w-24 rounded-full" />
         </div>
 
         {/* Items list */}

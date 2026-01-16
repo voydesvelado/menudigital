@@ -143,7 +143,7 @@ export default function BankTransferDrawer({
 
             <Button
               type="button"
-              className="w-full"
+              className="w-full h-11 rounded-full"
               onClick={() => {
                 // TODO: aquí luego conectamos WhatsApp + comprobante
               }}
