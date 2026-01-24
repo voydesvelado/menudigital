@@ -1,6 +1,7 @@
 import { hellix } from "./fonts";
 import "./globals.css";
 import { WizardProvider } from "@/components/admin/WizardProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Tu menú digital",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="es" className={hellix.variable}>
       <body>
         <WizardProvider>{children}</WizardProvider>
+        {/* <Analytics /> */}
       </body>
     </html>
   );

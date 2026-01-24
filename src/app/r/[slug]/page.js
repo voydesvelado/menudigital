@@ -9,6 +9,7 @@ import CategoryChips from "@/components/menu/CategoryChips";
 import MenuSection from "@/components/menu/MenuSection";
 import MenuLoading from "@/components/menu/MenuLoading";
 import BankTransferDrawer from "@/components/menu/BankTransferDrawer";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 function formatPrice(priceCents, currency = "MXN") {
   const amount = priceCents / 100;
@@ -29,6 +30,38 @@ export default function RestaurantPage() {
   const [restaurant, setRestaurant] = useState(null); // ya “normalizado” para tu UI
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  // Animaciones
+  const reduceMotion = useReducedMotion();
+
+  const ease = [0.16, 1, 0.3, 1];
+
+  const page = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { duration: 0.35, ease },
+    },
+  };
+
+  const list = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: reduceMotion ? 0 : 0.06,
+        delayChildren: reduceMotion ? 0 : 0.02,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 10 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, ease },
+    },
+  };
 
   // Fetch al backend
   useEffect(() => {
@@ -121,7 +154,7 @@ export default function RestaurantPage() {
           q.length === 0
             ? cat.items
             : cat.items.filter((item) =>
-                `${item.title} ${item.description}`.toLowerCase().includes(q)
+                `${item.title} ${item.description}`.toLowerCase().includes(q),
               );
 
         return { ...cat, items };
@@ -147,13 +180,15 @@ export default function RestaurantPage() {
   }
 
   return (
-    <main className="min-h-screen mx-auto w-full max-w-md border-gray bg-background">
+    <motion.main
+      className="min-h-screen mx-auto w-full max-w-md border-gray bg-background"
+      variants={page}
+      initial="hidden"
+      animate="show"
+    >
       {/* Sticky top bar */}
       <div className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/75 border-b">
-        <RestaurantHeader
-          name={restaurant.name}
-          // Si luego guardas logo en DB, aquí lo conectamos.
-        />
+        <RestaurantHeader name={restaurant.name} />
 
         <SearchBar
           value={query}
@@ -170,14 +205,22 @@ export default function RestaurantPage() {
         <div className="h-3" />
       </div>
 
-      {/* Content */}
-      {filteredCategories.map((category) => (
-        <MenuSection
-          key={category.id}
-          title={category.title}
-          items={category.items}
-        />
-      ))}
+      {/* Content (stagger clean + crossfade when filtering) */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`${activeCategory}-${query}`}
+          variants={list}
+          initial="hidden"
+          animate="show"
+          exit={{ opacity: 0, transition: { duration: 0.2, ease } }}
+        >
+          {filteredCategories.map((category) => (
+            <motion.div key={category.id} variants={item}>
+              <MenuSection title={category.title} items={category.items} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
 
       <BankTransferDrawer
         data={{
@@ -187,6 +230,6 @@ export default function RestaurantPage() {
           concepto: "Consumo restaurante",
         }}
       />
-    </main>
+    </motion.main>
   );
 }

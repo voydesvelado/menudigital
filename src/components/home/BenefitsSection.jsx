@@ -1,6 +1,11 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import BenefitCard from "./BenefitCard";
 
 export default function BenefitsSection() {
+  const reduceMotion = useReducedMotion();
+
   const benefits = [
     {
       id: "print",
@@ -33,28 +38,58 @@ export default function BenefitsSection() {
     },
   ];
 
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: reduceMotion ? 0 : 0.08,
+        delayChildren: reduceMotion ? 0 : 0.02,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 10 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
     <section
       className="mx-auto w-full max-w-md px-4 py-12"
       aria-labelledby="benefits-title"
     >
-      <h2
+      <motion.h2
         id="benefits-title"
+        initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-90px" }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="mb-8 text-center text-[24px] font-medium leading-tight tracking-tight"
       >
         Por qué usar un menú QR
-      </h2>
+      </motion.h2>
 
-      <div className="flex flex-col gap-4">
+      <motion.div
+        className="flex flex-col gap-4"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-110px" }}
+      >
         {benefits.map((benefit) => (
-          <BenefitCard
-            key={benefit.id}
-            imageURL={benefit.imageURL}
-            title={benefit.title}
-            description={benefit.description}
-          />
+          <motion.div key={benefit.id} variants={item}>
+            <BenefitCard
+              imageURL={benefit.imageURL}
+              title={benefit.title}
+              description={benefit.description}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
