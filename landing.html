@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Culinary Architect | Tu Menú Digital en 5 Minutos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#773215",
+                      "tertiary-fixed": "#ffdbce",
+                      "on-primary-fixed-variant": "#005049",
+                      "surface-variant": "#d9e3f4",
+                      "surface-container": "#e5eeff",
+                      "surface-tint": "#006a61",
+                      "on-primary-container": "#f4fffc",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "tertiary": "#924628",
+                      "outline-variant": "#bcc9c6",
+                      "primary": "#00685f",
+                      "background": "#f8f9ff",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#b05e3d",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#eef4ff",
+                      "secondary-fixed-dim": "#a6cfc8",
+                      "on-tertiary-fixed": "#370e00",
+                      "inverse-primary": "#6bd8cb",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#d9e3f4",
+                      "surface-bright": "#f8f9ff",
+                      "primary-container": "#008378",
+                      "primary-fixed": "#89f5e7",
+                      "inverse-on-surface": "#eaf1ff",
+                      "outline": "#6d7a77",
+                      "on-surface-variant": "#3d4947",
+                      "on-secondary-fixed-variant": "#274d48",
+                      "on-surface": "#121c28",
+                      "on-secondary-fixed": "#00201d",
+                      "on-tertiary-container": "#fffbff",
+                      "surface-dim": "#d1dbec",
+                      "on-primary-fixed": "#00201d",
+                      "inverse-surface": "#27313e",
+                      "tertiary-fixed-dim": "#ffb59a",
+                      "on-secondary-container": "#456b66",
+                      "surface": "#f8f9ff",
+                      "secondary-container": "#c2ebe3",
+                      "secondary": "#3f6560",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#121c28",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#c2ebe3",
+                      "surface-container-high": "#dfe9fa",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#f8f9ff] dark:bg-[#121c28]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#00685f] dark:text-[#008378]" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="text-lg font-black tracking-tighter text-[#121c28] dark:text-[#f8f9ff]">The Culinary Architect</span>
+</div>
+<button class="text-slate-500 font-['Inter'] tracking-tight hover:opacity-80 transition-opacity active:scale-95 duration-200">Log in</button>
+</header>
+<main class="pt-20">
+<!-- Section 1: Hero -->
+<section class="px-6 py-16 flex flex-col items-center text-center bg-surface">
+<h1 class="text-4xl font-extrabold tracking-tighter text-on-surface mb-4 leading-tight">
+                Tu menú digital listo en 5 minutos
+            </h1>
+<p class="text-on-surface-variant text-lg mb-8 max-w-md">
+                Tus clientes escanean el QR y ven tu menú en su celular de forma rápida, moderna y profesional.
+            </p>
+<div class="flex flex-col items-center gap-4 w-full max-w-xs">
+<button class="w-full bg-primary text-on-primary py-4 px-8 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                    Crear mi menú gratis
+                </button>
+<p class="text-xs text-on-surface-variant font-medium">
+                    Gratis para siempre · No necesitas tarjeta
+                </p>
+</div>
+<!-- Mockup Preview -->
+<div class="mt-16 relative w-full max-w-[280px] mx-auto">
+<div class="absolute -inset-4 bg-primary/5 rounded-[3rem] blur-3xl"></div>
+<div class="relative bg-on-surface p-3 rounded-[3rem] shadow-2xl border-4 border-surface-container-highest">
+<img alt="Menu Preview" class="rounded-[2.2rem] w-full aspect-[9/19] object-cover" data-alt="Modern smartphone displaying a beautiful digital restaurant menu with high-quality food photography and clear prices" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA6avFhLX22KYBLMODGzXRHUs55QvCtjomCNMHcObSnyvqLtVbgfhOQgsyBMbplLfyS0wFJts22nmKPqWm5gClJQ0n_Ai4ymhGQY5bOVLCZuBSl-wWCu_uv8wJZ7yvM574EY9D0xHbNGPbnTCGmBh7OR03aAAKdVlaF0eVRezSoiquwG5gJynTc-ygPWB6yS-89-3UT9hbL187YnCfGvjoImydQH16uLGsLS2Kj463Uw3A451sS5nyuBQgecv0UTdWoKQO0QERyg"/>
+</div>
+</div>
+</section>
+<!-- Section 2: Problem -->
+<section class="px-6 py-16 bg-surface-container-low">
+<h2 class="text-2xl font-bold tracking-tight text-center mb-12">¿Tu menú QR abre un PDF?</h2>
+<div class="grid gap-8">
+<!-- Bad Experience -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-error" data-icon="cancel">cancel</span>
+<span class="font-bold text-on-surface">La experiencia PDF</span>
+</div>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li class="flex gap-2">✕ Tarda mucho en cargar</li>
+<li class="flex gap-2">✕ Difícil de leer (hay que hacer zoom)</li>
+<li class="flex gap-2">✕ Imposible de actualizar rápido</li>
+</ul>
+</div>
+<!-- Good Experience -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-md border-2 border-primary/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="font-bold text-on-surface">The Culinary Architect</span>
+</div>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li class="flex gap-2 font-semibold text-primary">✓ Carga instantánea</li>
+<li class="flex gap-2">✓ Diseño adaptado a móviles</li>
+<li class="flex gap-2">✓ Cambia precios en un click</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Section 3: How it Works -->
+<section class="px-6 py-16 bg-surface">
+<h2 class="text-2xl font-bold tracking-tight text-center mb-16">Cómo funciona</h2>
+<div class="relative max-w-xs mx-auto">
+<!-- Dotted Line -->
+<div class="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-primary/30"></div>
+<!-- Step 1 -->
+<div class="relative flex items-start gap-6 mb-16">
+<div class="z-10 flex-shrink-0 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold text-xl shadow-lg">1</div>
+<div>
+<h3 class="font-bold text-lg mb-2">Sube tus platillos</h3>
+<p class="text-on-surface-variant text-sm">Agrega nombres, fotos y precios en nuestra plataforma intuitiva.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-start gap-6 mb-16">
+<div class="z-10 flex-shrink-0 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold text-xl shadow-lg">2</div>
+<div>
+<h3 class="font-bold text-lg mb-2">Personaliza el diseño</h3>
+<p class="text-on-surface-variant text-sm">Elige colores y tipografías que combinen con tu restaurante.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-start gap-6">
+<div class="z-10 flex-shrink-0 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold text-xl shadow-lg">3</div>
+<div>
+<h3 class="font-bold text-lg mb-2">Imprime tu QR</h3>
+<p class="text-on-surface-variant text-sm">Descarga tu código único y colócalo en tus mesas.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Demo -->
+<section class="px-6 py-16 bg-surface-container-low overflow-hidden">
+<div class="max-w-md mx-auto">
+<div class="bg-surface-container-lowest rounded-3xl shadow-xl overflow-hidden border border-outline-variant/10">
+<!-- Header Demo -->
+<div class="p-6 bg-primary text-on-primary">
+<h3 class="text-xl font-bold mb-1">Taquería El Fogón</h3>
+<p class="text-xs opacity-80">El sabor auténtico de México</p>
+</div>
+<!-- Tabs Demo -->
+<div class="flex border-b border-outline-variant/10 px-4">
+<button class="px-4 py-3 text-sm font-bold border-b-2 border-primary text-primary">Tacos</button>
+<button class="px-4 py-3 text-sm font-medium text-on-surface-variant">Bebidas</button>
+<button class="px-4 py-3 text-sm font-medium text-on-surface-variant">Extras</button>
+</div>
+<!-- Items Demo -->
+<div class="p-4 space-y-4">
+<div class="flex gap-4 items-center">
+<img alt="Tacos Pastor" class="w-20 h-20 rounded-xl object-cover" data-alt="Close up of three street tacos with cilantro, onion and lime on a wooden board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE4vJsw406LE13PrywNjRZmEwIGzolfPjPZvB1YIZSqlJlOhGwK0tCdGh8oMsiThuKjtAGBH9MzFHCYfMGuQzaEOjPvtTuRqMP9sQPqb9h636g6MkpLX-MLwMFzwiNl8fbjBpWNLDVCFJaBcZFbyEKJkY3KpUl49sAEY0nLSr0NnLhdzAmI_fYg15zFiG9SQjypbpCW0AzTvhAXYx0zDiGC69zPp3APou3QujOIFREYbXuQPK7cbjfchcO4rH3p5bvokic32UhdA"/>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Tacos al Pastor</h4>
+<p class="text-xs text-on-surface-variant line-clamp-1">Piña, cebolla y cilantro recién picado.</p>
+<span class="text-primary font-bold mt-1 block">$110</span>
+</div>
+</div>
+<div class="flex gap-4 items-center">
+<img alt="Quesadilla" class="w-20 h-20 rounded-xl object-cover" data-alt="Authentic mexican quesadillas with melted cheese and spicy salsa on a clay plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmu7e6wDOgRES9K8IEqHGGmPk44Dypd5NXlFGQm73qoMenWLKk4hZ07FGDeNnbil2YBQtO1_dJNATm2bWnpOmSU4LE4tkwudoOOIj31WohGJBfoLMhLRoKmCtbT_SRa--3TK70SuGR852hsdZK7h3kWbReFpmpbwrXUFulrpaNhEx4ZeS8n3o3q4744f1Hx5UqsieS8t4iQIUOACkvDBkWIWZ4AbFfIAIOKH6S_8nIF7uhNdrA9VyaKhPUe1V65oEgwFnTgLrZ1A"/>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Gringa de Queso</h4>
+<p class="text-xs text-on-surface-variant line-clamp-1">Tortilla de harina con queso fundido.</p>
+<span class="text-primary font-bold mt-1 block">$95</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Social Proof -->
+<section class="py-16 bg-surface">
+<div class="px-6 mb-12 flex flex-wrap justify-center gap-8 text-center">
+<div>
+<span class="block text-3xl font-black text-primary">+500</span>
+<span class="text-xs uppercase tracking-widest font-bold text-on-surface-variant">menús creados</span>
+</div>
+<div>
+<span class="block text-3xl font-black text-primary">+200</span>
+<span class="text-xs uppercase tracking-widest font-bold text-on-surface-variant">restaurantes</span>
+</div>
+<div>
+<span class="block text-3xl font-black text-primary">4.9</span>
+<span class="text-xs uppercase tracking-widest font-bold text-on-surface-variant">estrellas</span>
+</div>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar snap-x gap-4 px-6">
+<!-- Testimonial 1 -->
+<div class="min-w-[280px] snap-center bg-surface-container-low p-6 rounded-2xl">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface italic mb-4 text-sm">"Cambié mi PDF por esto y mis ventas de extras subieron un 20%. Los clientes aman las fotos."</p>
+<p class="font-bold text-xs">- Mario G., La Pizzería</p>
+</div>
+<!-- Testimonial 2 -->
+<div class="min-w-[280px] snap-center bg-surface-container-low p-6 rounded-2xl">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface italic mb-4 text-sm">"Es increíblemente fácil de usar. Lo configuré en una mañana libre y ya está en todas las mesas."</p>
+<p class="font-bold text-xs">- Sofía R., Café Central</p>
+</div>
+</div>
+</section>
+<!-- Section 6: Pricing -->
+<section class="px-6 py-16 bg-surface-container-low">
+<h2 class="text-2xl font-bold tracking-tight text-center mb-12">Planes para todos</h2>
+<div class="grid gap-8 max-w-sm mx-auto">
+<!-- Free Plan -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/20">
+<h3 class="text-xl font-bold mb-2">Gratis</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-black">$0</span>
+<span class="text-on-surface-variant text-sm">/mes</span>
+</div>
+<ul class="space-y-4 mb-8 text-sm">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check">check</span>
+                            Menú digital básico
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check">check</span>
+                            Hasta 30 platillos
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check">check</span>
+                            Soporte vía email
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold active:bg-primary/5 transition-colors">Empezar gratis</button>
+</div>
+<!-- Pro Plan -->
+<div class="bg-primary text-on-primary p-8 rounded-2xl relative shadow-xl ring-4 ring-primary-container/20">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-on-tertiary-fixed-variant text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">Popular</div>
+<h3 class="text-xl font-bold mb-2">Pro</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-black">$149</span>
+<span class="text-on-primary-container text-sm">MXN/mes</span>
+</div>
+<ul class="space-y-4 mb-8 text-sm opacity-90">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+                            Platillos ilimitados
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+                            Fotos en alta resolución
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+                            Sin publicidad
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+                            Personalización avanzada
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-xl bg-on-primary text-primary font-bold shadow-lg active:scale-95 transition-all">Elegir Pro</button>
+</div>
+</div>
+</section>
+<!-- Section 7: Final CTA -->
+<section class="px-6 py-20 bg-primary text-center">
+<h2 class="text-3xl font-extrabold text-on-primary tracking-tighter mb-6 leading-tight">Tu menú digital en 5 minutos</h2>
+<button class="w-full max-w-xs bg-on-primary text-primary py-4 px-8 rounded-xl font-bold text-lg shadow-2xl active:scale-95 transition-all">
+                Crear mi menú gratis ahora
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col items-center gap-6 bg-[#eef4ff] dark:bg-[#121c28]">
+<div class="text-md font-bold text-[#121c28] flex items-center gap-2">
+<span class="material-symbols-outlined text-[#00685f]" data-icon="restaurant_menu">restaurant_menu</span>
+            The Culinary Architect
+        </div>
+<div class="flex gap-6 font-['Inter'] text-sm text-slate-500">
+<a class="no-underline hover:text-[#00685f]" href="#">Privacy</a>
+<a class="no-underline hover:text-[#00685f]" href="#">Terms</a>
+<a class="no-underline hover:text-[#00685f]" href="#">Support</a>
+</div>
+<p class="font-['Inter'] text-sm text-slate-500 text-center">© 2024 The Culinary Architect. Designed for flavor.</p>
+</footer>
+<!-- BottomNavBar (Sticky) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-safe pt-4 px-4 bg-[#f8f9ff]/80 dark:bg-[#121c28]/80 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,104,95,0.08)] md:hidden">
+<a class="flex flex-col items-center justify-center bg-gradient-to-b from-[#00685f] to-[#008378] text-white rounded-xl px-6 py-3 mx-2 mb-2 hover:scale-105 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="add_circle">add_circle</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-wider">Crear mi menú gratis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:scale-105 transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="info">info</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-wider">Saber más</span>
+</a>
+</nav>
+<div class="h-20 md:hidden"></div> <!-- Spacer for BottomNav -->
+</body></html>

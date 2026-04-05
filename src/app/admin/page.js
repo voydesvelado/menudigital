@@ -6,17 +6,9 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useWizard } from "@/components/admin/WizardProvider";
+import { slugify } from "@/lib/slugify";
 
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // quita acentos
-    .replace(/[^a-z0-9\s-]/g, "") // quita símbolos raros
-    .replace(/\s+/g, "-") // espacios -> guiones
-    .replace(/-+/g, "-"); // colapsa guiones
-}
+const MAX_NAME_LENGTH = 80;
 
 export default function AdminPage() {
   const router = useRouter();
@@ -29,7 +21,9 @@ export default function AdminPage() {
     return slugify(restaurantName);
   }, [restaurantName]);
 
-  const canContinue = restaurantName.trim().length >= 2;
+  const canContinue =
+    restaurantName.trim().length >= 2 &&
+    restaurantName.trim().length <= MAX_NAME_LENGTH;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -72,6 +66,7 @@ export default function AdminPage() {
             placeholder="Nombre de tu restaurante"
             className="h-12 rounded-xl text-base"
             autoComplete="organization"
+            maxLength={MAX_NAME_LENGTH}
           />
 
           <Button

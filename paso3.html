@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Secciones del Menú</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-low": "#eef4ff",
+                    "surface-dim": "#d1dbec",
+                    "on-background": "#121c28",
+                    "outline-variant": "#bcc9c6",
+                    "on-error": "#ffffff",
+                    "on-surface": "#121c28",
+                    "primary-container": "#008378",
+                    "surface-variant": "#d9e3f4",
+                    "primary": "#00685f",
+                    "on-primary-fixed": "#00201d",
+                    "tertiary-fixed": "#ffdbce",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#c2ebe3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#456b66",
+                    "inverse-primary": "#6bd8cb",
+                    "on-primary-container": "#f4fffc",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#773215",
+                    "on-surface-variant": "#3d4947",
+                    "secondary": "#3f6560",
+                    "error": "#ba1a1a",
+                    "surface-container": "#e5eeff",
+                    "surface": "#f8f9ff",
+                    "inverse-surface": "#27313e",
+                    "surface-tint": "#006a61",
+                    "surface-container-highest": "#d9e3f4",
+                    "primary-fixed-dim": "#6bd8cb",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "secondary-container": "#c2ebe3",
+                    "on-primary-fixed-variant": "#005049",
+                    "surface-container-high": "#dfe9fa",
+                    "tertiary-container": "#b05e3d",
+                    "secondary-fixed-dim": "#a6cfc8",
+                    "outline": "#6d7a77",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#89f5e7",
+                    "on-tertiary-container": "#fffbff",
+                    "on-tertiary-fixed": "#370e00",
+                    "background": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#924628",
+                    "on-secondary-fixed-variant": "#274d48",
+                    "on-secondary-fixed": "#00201d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<header class="flex flex-col items-start w-full pt-4 px-6 gap-4 bg-white dark:bg-[#121c28] sticky top-0 z-40">
+<div class="flex items-center justify-between w-full">
+<button class="text-[#00685f] dark:text-[#0D9488] Active: scale-95 transition-transform hover:bg-teal-50 dark:hover:bg-teal-900/20 p-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<span class="font-['Inter'] font-semibold tracking-tight text-sm text-slate-400">Onboarding Progress</span>
+<div class="w-10"></div>
+</div>
+<div class="w-full flex gap-2 h-2 mb-2">
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-gradient-to-r from-primary to-primary-container rounded-full"></div>
+<div class="flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="flex-1 bg-surface-container-highest rounded-full"></div>
+</div>
+</header>
+<main class="flex-grow px-6 pt-8 pb-32 max-w-2xl mx-auto w-full">
+<section class="mb-8">
+<h1 class="text-[24px] font-bold text-on-surface leading-tight tracking-tight mb-2">
+                ¿Qué secciones tiene tu menú?
+            </h1>
+<p class="text-[15px] text-on-surface-variant">
+                Puedes cambiarlas después, no te preocupes
+            </p>
+</section>
+<div class="space-y-3 mb-6">
+<div class="flex items-center justify-between h-[48px] px-4 bg-[#F9FAFB] rounded-[10px] group transition-all hover:bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab active:cursor-grabbing">drag_handle</span>
+<span class="text-[16px] font-medium text-on-surface">Tacos</span>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between h-[48px] px-4 bg-[#F9FAFB] rounded-[10px] group transition-all hover:bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab active:cursor-grabbing">drag_handle</span>
+<span class="text-[16px] font-medium text-on-surface">Bebidas</span>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between h-[48px] px-4 bg-[#F9FAFB] rounded-[10px] group transition-all hover:bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab active:cursor-grabbing">drag_handle</span>
+<span class="text-[16px] font-medium text-on-surface">Extras</span>
+</div>
+<button class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+<input class="w-full h-[48px] pl-12 pr-4 bg-surface-container-low border-none rounded-[10px] text-[16px] focus:ring-2 focus:ring-primary transition-all placeholder:text-outline" placeholder="Agregar otra sección" type="text"/>
+</div>
+<div class="mt-12 p-6 bg-surface-container-low rounded-2xl flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-white">
+<img class="w-full h-full object-cover" data-alt="Close up of a professional restaurant menu layout with elegant typography and high quality food photography on a table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5o7BrZP3drhhI-HRtB-LVSnXkfMtPP_cUThFfTkPlPcJur-T0gl83525XJ2LYVsqGsMBHDwjN0YuMp14dIwEDsjiJWXAItkaA6Itjk4_PpqnjXJ_gDqp_ntqTHsld5IXOtki05oXd3wWubDZGi-1gLiDSsIuGaOyKUY-xyp82wcZJwwPgf30HWluRdRqs_R9NvM2lz9krd9Z_KuedxvyQLEJCBkd_eAxfj1xOrb5VgaHRhiguYwLJpB-0YPTmR9djoy_Hb1sqEA"/>
+</div>
+<div>
+<h4 class="font-semibold text-sm text-on-surface">Consejo de Arquitecto</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+                    Organizar tu menú por categorías cortas ayuda a tus clientes a decidir un 20% más rápido.
+                </p>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-center items-center bg-transparent backdrop-blur-xl px-6 pb-8">
+<button class="flex items-center justify-center bg-gradient-to-b from-[#00685f] to-[#008378] h-[56px] w-full rounded-xl text-white shadow-[0_-4px_24px_rgba(0,104,95,0.04)] font-['Inter'] font-bold text-base uppercase tracking-wider hover:brightness-110 active:scale-[0.98] transition-all duration-200">
+<span>Continuar con estas secciones</span>
+<span class="material-symbols-outlined ml-2">chevron_right</span>
+</button>
+</footer>
+</body></html>

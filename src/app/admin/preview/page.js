@@ -6,6 +6,7 @@ import Papa from "papaparse";
 
 import { Button } from "@/components/ui/button";
 import { useWizard } from "@/components/admin/WizardProvider";
+import { slugify } from "@/lib/slugify";
 
 import RestaurantHeader from "@/components/menu/RestaurantHeader";
 import SearchBar from "@/components/menu/SearchBar";
@@ -18,17 +19,6 @@ function normalizeHeader(h) {
     .toLowerCase();
 }
 
-function toCategoryId(title) {
-  return String(title || "")
-    .toLowerCase()
-    .trim()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
-}
-
 export default function AdminPreviewPage() {
   const router = useRouter();
   const { wizard, setWizard } = useWizard();
@@ -36,6 +26,7 @@ export default function AdminPreviewPage() {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
   const [parsedCategories, setParsedCategories] = useState([]);
+  const [skippedRows, setSkippedRows] = useState(0);
   const [error, setError] = useState("");
   const [isParsing, setIsParsing] = useState(false);
 
@@ -57,6 +48,12 @@ export default function AdminPreviewPage() {
       setError("");
 
       try {
+        if (wizard.csvFile.size > 5 * 1024 * 1024) {
+          throw new Error(
+            "El archivo es demasiado grande. El máximo es 5 MB."
+          );
+        }
+
         const csvText = await wizard.csvFile.text();
 
         const result = Papa.parse(csvText, {
@@ -66,7 +63,6 @@ export default function AdminPreviewPage() {
         });
 
         if (result.errors?.length) {
-          // PapaParse devuelve errores con row + message
           const first = result.errors[0];
           throw new Error(
             `Error en CSV (fila ${first.row ?? "?"}): ${first.message}`
@@ -75,42 +71,45 @@ export default function AdminPreviewPage() {
 
         const rows = (result.data || []).filter(Boolean);
 
-        // Validación columnas mínimas
-        const required = ["category", "item", "price", "description"];
-        const missing = required.filter((k) => !(k in (rows[0] || {})));
         if (rows.length === 0) {
           throw new Error(
             "Tu CSV está vacío. Descarga la plantilla y vuelve a intentar."
           );
         }
+
+        const required = ["category", "item", "price", "description"];
+        const missing = required.filter((k) => !(k in (rows[0] || {})));
         if (missing.length) {
           throw new Error(
-            `Faltan columnas requeridas: ${missing.join(
-              ", "
-            )}. Usa la plantilla CSV.`
+            `Faltan columnas requeridas: ${missing.join(", ")}. Usa la plantilla CSV.`
           );
         }
 
-        // Construcción del JSON para tu UI
         const categoriesMap = new Map();
+        let skipped = 0;
 
         rows.forEach((r, idx) => {
           const categoryTitle = String(r.category || "").trim();
           const itemTitle = String(r.item || "").trim();
           const description = String(r.description || "").trim();
 
-          // price: permitir 139.99 o 139
           const priceRaw = String(r.price || "")
             .trim()
-            .replace("$", "");
-          const price = Number(priceRaw);
+            .replace(/\$/g, "");
+          const price = parseFloat(priceRaw);
 
-          if (!categoryTitle || !itemTitle || Number.isNaN(price)) {
-            // si una fila viene incompleta, la omitimos y podrías mostrar warning luego
+          if (
+            !categoryTitle ||
+            !itemTitle ||
+            Number.isNaN(price) ||
+            price < 0 ||
+            !Number.isFinite(price)
+          ) {
+            skipped++;
             return;
           }
 
-          const categoryId = toCategoryId(categoryTitle) || `cat-${idx}`;
+          const categoryId = slugify(categoryTitle) || `cat-${idx}`;
 
           if (!categoriesMap.has(categoryId)) {
             categoriesMap.set(categoryId, {
@@ -124,10 +123,12 @@ export default function AdminPreviewPage() {
           cat.items.push({
             id: `${categoryId}-${cat.items.length + 1}`,
             title: itemTitle,
-            price: price.toFixed(2), // tu UI lo imprime como string; si prefieres number, cámbialo
+            price: parseFloat(price.toFixed(2)),
             description,
           });
         });
+
+        setSkippedRows(skipped);
 
         const categories = Array.from(categoriesMap.values()).filter(
           (c) => c.items.length > 0
@@ -232,17 +233,18 @@ export default function AdminPreviewPage() {
         );
       }
 
-      // Limpia estado si quieres (opcional)
-      setWizard((prev) => ({
-        ...prev,
-        // podrías resetear todo el wizard aquí si quieres:
-        // restaurantName: "",
-        // restaurantSlug: "",
-        // csvFile: null,
-        // parsedMenu: null,
-      }));
+      if (!data?.slug || typeof data.slug !== "string") {
+        throw new Error("Respuesta inesperada del servidor. Intenta de nuevo.");
+      }
 
-      // Redirige a la página real del restaurante
+      setWizard({
+        restaurantName: "",
+        restaurantSlug: "",
+        csvFile: null,
+        logoFile: null,
+        parsedMenu: null,
+      });
+
       router.push(`/r/${data.slug}`);
     } catch (e) {
       setSubmitError(e.message || "Error inesperado al finalizar.");
@@ -273,6 +275,16 @@ export default function AdminPreviewPage() {
 
         {isParsing ? (
           <p className="mt-2 text-sm text-muted-foreground">Leyendo tu CSV…</p>
+        ) : null}
+
+        {!isParsing && skippedRows > 0 ? (
+          <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-50 p-3">
+            <p className="text-sm text-yellow-800">
+              {skippedRows === 1
+                ? "1 fila fue omitida por datos incompletos o inválidos."
+                : `${skippedRows} filas fueron omitidas por datos incompletos o inválidos.`}
+            </p>
+          </div>
         ) : null}
 
         {error ? (

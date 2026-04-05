@@ -14,7 +14,7 @@ export default function AdminMenuPage() {
   const { wizard, setWizard } = useWizard();
 
   const [csvFile, setCsvFile] = useState(null);
-  const [logoFile, setLogoFile] = useState(null); // dummy
+  const [logoFile] = useState(null); // reserved for future logo upload
 
   // Si entran directo a /admin/menu sin el paso 1
   useEffect(() => {
@@ -43,25 +43,38 @@ export default function AdminMenuPage() {
 
   return (
     <main className="min-h-screen mx-auto w-full max-w-md border-gray bg-background">
-      <header>
+      <header className="px-4 pt-6">
         <p className="text-sm font-semibold tracking-tight">TU MENU DIGITAL</p>
       </header>
 
-      <section className="pt-10" aria-labelledby="step2-title">
+      <section className="px-4 pt-10" aria-labelledby="step2-title">
         <h1 id="step2-title" className="text-2xl font-semibold tracking-tight">
           Carga de menú y logo
         </h1>
 
         <div className="mt-6 space-y-6">
           {/* CSV */}
-          {/* CSV */}
           <div className="space-y-3">
-            <p className="text-sm font-medium">Menú en .CSV</p>
+            <label
+              htmlFor="csv-upload"
+              className="text-sm font-medium"
+            >
+              Menú en .CSV
+            </label>
 
             <Input
+              id="csv-upload"
               type="file"
               accept=".csv,text/csv"
-              onChange={(e) => setCsvFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => {
+                const file = e.target.files?.[0] ?? null;
+                if (file && file.size > 5 * 1024 * 1024) {
+                  alert("El archivo es demasiado grande. El máximo es 5 MB.");
+                  e.target.value = "";
+                  return;
+                }
+                setCsvFile(file);
+              }}
             />
 
             {csvFile ? (
@@ -84,12 +97,14 @@ export default function AdminMenuPage() {
 
           {/* Logo dummy */}
           <div className="space-y-2">
-            <p className="text-sm font-medium">Logo (opcional)</p>
+            <label htmlFor="logo-upload" className="text-sm font-medium">
+              Logo (opcional)
+            </label>
 
             <Input
+              id="logo-upload"
               type="file"
               accept="image/*"
-              onChange={(e) => setLogoFile(e.target.files?.[0] ?? null)}
               disabled
             />
 

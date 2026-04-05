@@ -1,51 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import BenefitsSection from "@/components/home/BenefitsSection";
-import HowItWorksSection from "@/components/home/HowItWorksSection";
-import SeoBenefitsSection from "@/components/home/SeoBenefitsSection";
-import { TopNavbar } from "@/components/home/TopNavbar";
-import HeroSection from "@/components/home/HeroSection";
+import LandingPage from "@/components/landing/LandingPage";
 
-// SEO (App Router)
 export const metadata = {
-  title: "Menú digital con QR para restaurantes | Menú QR",
+  title: "Lumo | Tu Menú Digital en 5 Minutos",
   description:
-    "Convierte tu menú físico en una experiencia tipo Uber Eats para que tus clientes encuentren más rápido, exploren más platillos y aumenten el consumo por mesa.",
+    "Crea tu menú digital gratis en 5 minutos. Tus clientes escanean el QR y ven tu menú en su celular. Sin PDFs, sin apps, sin complicaciones.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Menú digital con QR para restaurantes",
+    title: "Lumo | Tu Menú Digital en 5 Minutos",
     description:
-      "Menú digital tipo Uber Eats: búsqueda, categorías y mejor experiencia para vender más.",
+      "Menú digital con QR para restaurantes. Rápido, bonito y gratis.",
     url: "/",
     type: "website",
   },
 };
 
 export default function HomePage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Menú QR",
-    url: "https://tudominio.com",
-    description:
-      "Menú digital con QR para restaurantes con navegación tipo Uber Eats.",
-  };
-
-  return (
-    <>
-      {/* Structured Data (SEO) */}
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      <TopNavbar />
-      <HeroSection />
-      <SeoBenefitsSection />
-      <BenefitsSection />
-      <HowItWorksSection />
-    </>
-  );
+  return <LandingPage />;
 }

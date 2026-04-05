@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
     <html lang="es" className={hellix.variable}>
       <body>
         <WizardProvider>{children}</WizardProvider>
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );
