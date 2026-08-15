@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Copy, Check, Download, ArrowRight } from "lucide-react";
@@ -11,7 +11,7 @@ const PRIMARY_MID  = "#0D9488";
 const PRIMARY_DARK = "#008378";
 const WA_GREEN     = "#25D366";
 
-export default function OnboardingDone() {
+function OnboardingDoneContent() {
   const router       = useRouter();
   const searchParams = useSearchParams();
 
@@ -274,5 +274,13 @@ export default function OnboardingDone() {
 
       </main>
     </div>
+  );
+}
+
+export default function OnboardingDone() {
+  return (
+    <Suspense fallback={<div className="bg-white min-h-screen" />}>
+      <OnboardingDoneContent />
+    </Suspense>
   );
 }
